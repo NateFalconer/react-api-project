@@ -1,7 +1,8 @@
 roadmap
 
-connect to swanson api
+// connect to swanson api
 make components: homepage, story, navbar, ...
+test to make sure i can reliably match stories to quotes
 get ron image and potential backgrounds
 get random quote, display at top of page with ron image and textbox
 make function to pull out relevant words from quote
