@@ -16,19 +16,19 @@ class App extends Component {
 
 
   componentDidMount() {
-    //  axios.get(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
-    //      this.setState({
-    //      newsStories: res.data,
-    //      ready: true
-    //    });
-    //  });
+    //   axios.get(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
+    //       this.setState({
+    //       newsStories: res.data,
+    //       ready: true
+    //     });
+    //   });
     
-    axios.get(`https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
-      this.setState({
-        popularStores: res.data,
-        ready: true
-      });
-    });
+    // axios.get(`https://api.nytimes.com/svc/mostpopular/v2/viewed/30.json?api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
+    //   this.setState({
+    //     popularStories: res.data,
+    //     ready: true
+    //   });
+    // });
     
     axios.get(`http://ron-swanson-quotes.herokuapp.com/v2/quotes`).then(res => {
         this.setState({
@@ -39,8 +39,8 @@ class App extends Component {
   }
   
   render() {
-     console.log(this.state.newsStories)
-     console.log(this.state.popularStories)
+    //  console.log(this.state.newsStories)
+    //  console.log(this.state.popularStories)
     //  console.log(this.state.randomQuote)
     return (
       <div className="App">
