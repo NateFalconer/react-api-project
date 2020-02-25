@@ -14,3 +14,19 @@ make another function to pull up another swanson quote based on the story text
 set up different story backgrounds based on the story category
 download episodes of parks and rec if necessary for backgrounds
 
+        axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[3]}%20${searchTerms[4]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
+        this.setState({
+            currentStory: res.data,
+            ready: true
+            })
+        })
+    }
+
+    showTheStories = () => {
+        return this.state.currentStory.map(eachStory => {
+            return (
+                <div className="row"> </div>
+                <div className="storyOne"> </div>
+            );
+        });
+    }

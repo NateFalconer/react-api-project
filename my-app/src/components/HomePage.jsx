@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './NavBar'
+import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
 
@@ -52,15 +55,8 @@ class HomePage extends Component {
         }
         console.log(searchTerms)
 
-
-        // axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=headline:("${searchTerms[0]}""${searchTerms[1]}""${searchTerms[2]}")&api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
-        //     this.setState({
-        //     currentStory: res.data,
-        //     ready: true
-        //   })
-        // })
     
-         axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[3]}%20${searchTerms[4]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
+         axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[2]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
         console.log(res)
          this.setState({
             currentStory: res.data.response.results,
@@ -69,11 +65,13 @@ class HomePage extends Component {
     })
 }
         showTheStories = () => {
-            return this.state.currentStory.slice(1,4).map(eachStory => {
+            return this.state.currentStory.slice(0,3).map(eachStory => {
                 return (
-                    <div className="row">
-                    <div className="storyOne">{eachStory.webTitle}</div>
-                    </div>
+                    <>
+                    <Link to={{ pathname:`article/${eachStory.webUrl}`, state:{url:eachStory.webUrl} }}>
+                        <div className="storyLinks">{eachStory.webTitle}</div>
+                    </Link>
+                    </>
                 );
             });
         }
@@ -82,12 +80,23 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Swansonews</h1>
+            <div className="homeBody">
+                <div className="nav">
+                    <NavBar />
+                </div>
+                <div className="quote">
+                <img className="ronleft" src="./assets/ronface.png" />
                 <h2>{this.showTheQuote()}</h2>
+                <img className="ronright" src="./assets/ronface.png" />
+                </div>
                 {console.log(this.state.searchTerms)}
                 {this.state.searchTerms && this.state.currentStory.length === 0 && this.filterTheQuote()}
-                {this.state.ready? (this.showTheStories()): ("loading...")}
+                <div className="stories">
+                {this.state.ready? (
+                    this.showTheStories()
+                    
+                ): ("loading...")}
+                </div>
             </div>
         );
     }

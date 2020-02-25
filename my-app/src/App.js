@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import './App.css';
 import axios from 'axios'
 import {Switch, Route, Link} from 'react-router-dom'
 import HomePage from './components/HomePage'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Article from './components/Article'
 
 class App extends Component {
   
@@ -47,7 +48,12 @@ class App extends Component {
       <div className="App">
         <Switch>
         <Route exact path="/" render={props => 
-            <HomePage{...props} randomQuote={this.state.randomQuote}/>} />
+            <HomePage {...props} randomQuote={this.state.randomQuote}/>} />
+        <Route path="/article" 
+              render={props => 
+            <Article {...props}/>
+          }
+         />
         </Switch>
       </div>
   );
