@@ -14,9 +14,9 @@ class Article extends Component {
                 if (response.status === 200) {
                     const html = response.data;
                     const $ = cheerio.load(html);
-                    console.log($('.content__main-column').text())
+                    console.log($('.content__article-body > p').text())
                     //console.log($('body').html())
-                    let text = $('.content__main-column').text()
+                    let text = ($('.content__article-body > p').text())
                     this.setState({text})
                 }
             }, (error) => console.log(error));
