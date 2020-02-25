@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 
 class HomePage extends Component {
+
+    state = {
+        currentStory: [],
+        searchTerms: []
+    }
+
 
     showTheQuote = () => {
         return <p>{this.props.randomQuote}</p>
     }
+    // componentDidMount = () => {
+    //     this.filterTheQuote();
+    // }
 
     filterTheQuote = () => {
         let filteredQuote = this.props.randomQuote.toString().toLowerCase();
         let extraFilter = filteredQuote.replace(/[.?!:;',]/g, "");
         let uselessWordArray = [
             "a", "at", "be", "cant", "are", "could", "for", 
-            "do", "does", "how", "i", "in", "is", "many", "much", "of", 
+            "do", "does", "how", "id", "i", "in", "is", "many", "much", "of", 
             "on", "or", "should", "shouldnt", "so", "such", "the", 
             "them", "they", "to", "us", "we", "what", "who", "why", 
             "with", "wont", "would", "wouldnt", "you", "going", "less", 
@@ -26,13 +35,14 @@ class HomePage extends Component {
             "thank", "without", "heres", "says", "ill", "go", "began", "before", "any",
             "over", "can", "been", "whats", "he", "his", "except", "still",
             "always", "am", "call", "same", "time", "there", "it", "youve",
-            "ive",
+            "ive", "their", "where", "people", "need", "four", "five", "six", "something",
+            "anything", "everything", "zero", "dear", "got", "between", "each", "our", "good", "great", "belong", "keep", "little", "name", "know", "anyone",
+            "notice", "complete", "proper", "own", "bad", "word"
           ];
 
-        let expStr = uselessWordArray.join("|");
-        console.log(new RegExp('\\b(' + expStr + ')\\b', 'gi'), ' ');
+        let expStr = uselessWordArray.join("|")
         let finalQuote = extraFilter.replace(new RegExp('\\b(' + expStr + ')\\b', 'gi'), ' ').replace(/\s{2,}/g, ' ');
-        console.log(finalQuote);
+        // console.log(finalQuote);
         let searchTerms = finalQuote.split(' ');
         if (searchTerms[0] === "") {
             searchTerms.splice(0, 1)
@@ -41,15 +51,36 @@ class HomePage extends Component {
             searchTerms.splice(searchTerms.length-1, 1)
         }
         console.log(searchTerms)
-    }
+
+
+        // axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=headline:("${searchTerms[0]}""${searchTerms[1]}""${searchTerms[2]}")&api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
+        //     this.setState({
+        //     currentStory: res.data,
+        //     ready: true
+        //   })
+        // })
+    
+         axios.get(`https://content.guardianapis.com/search?q=${searchTerms[0]}%20AND%20(${searchTerms[1]}%20OR%20${searchTerms[2]}%20${searchTerms[3]})&tag=politics/politics&from-date=2014-01-01&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
+        this.setState({
+            currentStory: res.data,
+            ready: true
+        })
+    })
+}
+
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return !(JSON.stringify(this.props) !== JSON.stringify(nextProps) && 
+    //     JSON.stringify(this.state) !== JSON.stringify(nextState));
+    // }
 
     render() {
         return (
             <div>
                 <h1>Swansonews</h1>
                 <h2>{this.showTheQuote()}</h2>
-                {this.filterTheQuote()}
-
+                {console.log(this.state.searchTerms)}
+                {this.state.searchTerms && this.state.currentStory.length === 0 && this.filterTheQuote()}
             </div>
         );
     }

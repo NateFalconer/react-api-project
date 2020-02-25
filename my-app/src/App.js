@@ -14,6 +14,7 @@ class App extends Component {
     ready: false
   }
 
+  // guardian api key: f9d94560-e043-4ddc-ae02-fa498b85b806
 
   componentDidMount() {
     //   axios.get(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=YRBTUrHKNAXud2ybgqO5kVXXfBPF8zzA`).then(res => {
