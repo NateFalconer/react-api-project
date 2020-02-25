@@ -5,16 +5,15 @@ class HomePage extends Component {
 
     state = {
         currentStory: [],
-        searchTerms: []
+        searchTerms: [],
+        ready: false
     }
 
 
     showTheQuote = () => {
         return <p>{this.props.randomQuote}</p>
     }
-    // componentDidMount = () => {
-    //     this.filterTheQuote();
-    // }
+   
 
     filterTheQuote = () => {
         let filteredQuote = this.props.randomQuote.toString().toLowerCase();
@@ -37,7 +36,8 @@ class HomePage extends Component {
             "always", "am", "call", "same", "time", "there", "it", "youve",
             "ive", "their", "where", "people", "need", "four", "five", "six", "something",
             "anything", "everything", "zero", "dear", "got", "between", "each", "our", "good", "great", "belong", "keep", "little", "name", "know", "anyone",
-            "notice", "complete", "proper", "own", "bad", "word"
+            "notice", "complete", "proper", "own", "bad", "word", "idea", "capable",
+            "amount",
           ];
 
         let expStr = uselessWordArray.join("|")
@@ -60,19 +60,25 @@ class HomePage extends Component {
         //   })
         // })
     
-         axios.get(`https://content.guardianapis.com/search?q=${searchTerms[0]}%20AND%20(${searchTerms[1]}%20OR%20${searchTerms[2]}%20${searchTerms[3]})&tag=politics/politics&from-date=2014-01-01&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
-        this.setState({
-            currentStory: res.data,
+         axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[3]}%20${searchTerms[4]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
+        console.log(res)
+         this.setState({
+            currentStory: res.data.response.results,
             ready: true
         })
     })
 }
+        showTheStories = () => {
+            return this.state.currentStory.slice(1,4).map(eachStory => {
+                return (
+                    <div className="row">
+                    <div className="storyOne">{eachStory.webTitle}</div>
+                    </div>
+                );
+            });
+        }
 
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return !(JSON.stringify(this.props) !== JSON.stringify(nextProps) && 
-    //     JSON.stringify(this.state) !== JSON.stringify(nextState));
-    // }
+    
 
     render() {
         return (
@@ -81,6 +87,7 @@ class HomePage extends Component {
                 <h2>{this.showTheQuote()}</h2>
                 {console.log(this.state.searchTerms)}
                 {this.state.searchTerms && this.state.currentStory.length === 0 && this.filterTheQuote()}
+                {this.state.ready? (this.showTheStories()): ("loading...")}
             </div>
         );
     }
