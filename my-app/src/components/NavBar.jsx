@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Navbar, Row, Nav, Form, FormControl, Button} from 'react-bootstrap';
 
 class NavBar extends Component {
     render() {
         return (
-            <div className="navbartop">
-            <nav className="navbar navbar-dark bg-primary mb-3">
-            <div className="container">
-              <a className="navbar-brand" href="/">Swansonews</a>
-            </div>
-            
-          </nav>
-          </div>
+          <div className="topbar">
+          <Navbar bg="primary" variant="dark" fixed="top">
+            <Navbar.Brand href="/">Swansonews</Navbar.Brand>
+          </Navbar>
+        </div>
         );
     }
 }

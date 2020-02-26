@@ -81,17 +81,8 @@ class HomePage extends Component {
                 })
             })
         }
-        if (searchTerms.length === 4) {
+        if (searchTerms.length >= 4) {
             axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[2]}%20${searchTerms[3]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
-                console.log(res)
-                this.setState({
-                    currentStory: res.data.response.results,
-                    ready: true
-                })
-            })
-        }
-        if (searchTerms.length >= 5) {
-            axios.get(`https://content.guardianapis.com/search?q=(${searchTerms[0]}%20${searchTerms[1]}%20${searchTerms[2]}%20${searchTerms[3]}%20${searchTerms[4]})&api-key=f9d94560-e043-4ddc-ae02-fa498b85b806`).then(res => {
                 console.log(res)
                 this.setState({
                     currentStory: res.data.response.results,
@@ -113,7 +104,7 @@ class HomePage extends Component {
         });
     }
 
-    
+
 
     render() {
         return (
@@ -122,11 +113,11 @@ class HomePage extends Component {
                     <NavBar />
                 </div>
                 <div className="quote">
-                    <img className="ronleft" src="./assets/ronface.png" />
+                    <img className="ronleft" alt="ronfacehere" src="./assets/ronface.png" />
                     <div className="innerquote">
-                    <p>{this.showTheQuote()}</p>
+                        <p>{this.showTheQuote()}</p>
                     </div>
-                    <img className="ronright" src="./assets/ronface.png" />
+                    <img className="ronright" alt="otherfacehere" src="./assets/ronface.png" />
                 </div>
                 {console.log(this.state.searchTerms)}
                 {this.state.searchTerms && this.state.currentStory.length === 0 && this.filterTheQuote()}

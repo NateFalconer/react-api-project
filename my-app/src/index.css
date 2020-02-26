@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./assets/bg1.jpg');
+  background-image: url('./assets/bg2.jpg');
   background-attachment: fixed;
   background-size: cover;
 }
@@ -21,7 +21,7 @@ code {
   display: flex;
   flex-direction: column;
 }
-.navbartop {
+.topbar {
   width: 100%;
 }
 
@@ -46,13 +46,14 @@ code {
 
 .quote {
   display: flex;
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom: 70px;
   justify-content: space-evenly;
 }
 
 .innerquote {
-  color: rgb(12, 7, 7);
+  color: #fff;
+  width: 60%;
   text-shadow: 0 5px 10px rgba(0,0,0,1);
   mix-blend-mode: overlay;
   /* box-shadow: 0 5px 10px rgba(0,0,0,1); */
@@ -78,8 +79,9 @@ code {
   padding-left: 100px;
   text-align: center;
   padding-right: 100px;
+  padding-top: 80px;
   text-shadow: 0 5px 10px rgba(0,0,0,1);
-  /* mix-blend-mode: overlay; */
-  /* box-shadow: 0 5px 10px rgba(0,0,0,1); */
-  /* background: rgba(0,0,0,.5); */
+  /* mix-blend-mode: overlay;
+  box-shadow: 0 5px 10px rgba(0,0,0,1);
+  background: rgba(0,0,0,.5); */
 }

@@ -14,7 +14,7 @@ class Article extends Component {
                 if (response.status === 200) {
                     const html = response.data;
                     const $ = cheerio.load(html);
-                    console.log($('.content__article-body > p').text())
+                    // console.log($('.content__article-body > p').text())
                     //console.log($('body').html())
                     let text = ($('.content__article-body > p').text())
                     this.setState({text})
@@ -24,7 +24,9 @@ class Article extends Component {
     render() {
         return (
             <div>
+            <div className="nav">
             <NavBar />
+            </div>
             <div className="articleText">
                 {this.state.text}
             </div>
