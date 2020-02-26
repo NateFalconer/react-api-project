@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar'
 import { Link } from 'react-router-dom';
 
@@ -86,7 +85,7 @@ class HomePage extends Component {
                 </div>
                 <div className="quote">
                 <img className="ronleft" src="./assets/ronface.png" />
-                <h2>{this.showTheQuote()}</h2>
+                <p>{this.showTheQuote()}</p>
                 <img className="ronright" src="./assets/ronface.png" />
                 </div>
                 {console.log(this.state.searchTerms)}
