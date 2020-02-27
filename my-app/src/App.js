@@ -5,6 +5,7 @@ import HomePage from './components/HomePage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Article from './components/Article'
+import About from './components/About'
 
 class App extends Component {
   
@@ -52,6 +53,11 @@ class App extends Component {
         <Route path="/article" 
               render={props => 
             <Article {...props}/>
+          }
+         />
+        <Route path="/about" 
+              render={props => 
+            <About {...props}/>
           }
          />
         </Switch>

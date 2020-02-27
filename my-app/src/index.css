@@ -39,7 +39,7 @@ code {
   width: 30vw;
   color: #fff;
   text-shadow: 0 5px 10px rgba(0,0,0,1);
-  mix-blend-mode: overlay;
+  /* mix-blend-mode: overlay; */
   box-shadow: 0 5px 10px rgba(0,0,0,1);
   background: rgba(0,0,0,.5);
 }
@@ -55,7 +55,7 @@ code {
   color: #fff;
   width: 60%;
   text-shadow: 0 5px 10px rgba(0,0,0,1);
-  mix-blend-mode: overlay;
+  /* mix-blend-mode: overlay; */
   /* box-shadow: 0 5px 10px rgba(0,0,0,1); */
   /* background: rgba(0,0,0,.5); */
   text-transform: uppercase;
@@ -81,7 +81,7 @@ code {
   padding-right: 100px;
   padding-top: 80px;
   text-shadow: 0 5px 10px rgba(0,0,0,1);
-  /* mix-blend-mode: overlay;
-  box-shadow: 0 5px 10px rgba(0,0,0,1);
-  background: rgba(0,0,0,.5); */
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(0,0,0,.7)
 }

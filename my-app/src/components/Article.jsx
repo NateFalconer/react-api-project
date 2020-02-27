@@ -5,7 +5,9 @@ import NavBar from './NavBar'
 
 class Article extends Component {
     state={
-        text:''
+        text:'',
+        title:'',
+        lede:'',
     }
     componentDidMount() {
         console.log(this.props)
@@ -14,10 +16,14 @@ class Article extends Component {
                 if (response.status === 200) {
                     const html = response.data;
                     const $ = cheerio.load(html);
-                    // console.log($('.content__article-body > p').text())
-                    //console.log($('body').html())
-                    let text = ($('.content__article-body > p').text())
-                    this.setState({text})
+                    let title = $('.content__headline').text();
+                    let lede = $('.content__standfirst > p').text();
+                    let pArray = []
+
+                    $('.content__article-body > p').each(function(){
+                        pArray.push(<p>{$(this).text()}</p>);
+                    });
+                    this.setState({title: title, lede: lede, text: pArray})
                 }
             }, (error) => console.log(error));
     }
@@ -28,6 +34,8 @@ class Article extends Component {
             <NavBar />
             </div>
             <div className="articleText">
+                <h1>{this.state.title}</h1>
+                <h2>{this.state.lede}</h2>
                 {this.state.text}
             </div>
             </div>
