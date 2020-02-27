@@ -19,7 +19,7 @@ class HomePage extends Component {
 
     filterTheQuote = () => {
         let filteredQuote = this.props.randomQuote.toString().toLowerCase();
-        let extraFilter = filteredQuote.replace(/[.?!:;',]/g, "");
+        let extraFilter = filteredQuote.replace(/[.?!:;',‘’]/g, "");
         let uselessWordArray = [
             "a", "at", "be", "cant", "are", "could", "for",
             "do", "does", "how", "id", "i", "in", "is", "many", "much", "of",
@@ -40,8 +40,9 @@ class HomePage extends Component {
             "anything", "everything", "zero", "dear", "got", "between", "each", "our", "good", 
             "great", "belong", "keep", "little", "name", "know", "anyone",
             "notice", "complete", "proper", "own", "bad", "word", "idea", "capable",
-            "amount", "tom", "april", "andy", "leslie", "gary", "larry", "jerry",
-            "donna", "believe", 
+            "amount", "tom", "april", "andy", "andys", "leslie", "gary", "larry", "jerry",
+            "donna", "believe", "acceptable", "other", "guy", "once",
+            "ever", "official", "demonstrate", "simple", "man", "serve"
         ];
 
         let expStr = uselessWordArray.join("|")
