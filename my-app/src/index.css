@@ -47,7 +47,7 @@ code {
 .quote {
   display: flex;
   padding-top: 80px;
-  padding-bottom: 70px;
+  padding-bottom: 60px;
   justify-content: space-evenly;
 }
 
@@ -101,5 +101,10 @@ code {
 
 .pyr {
   padding-top: 20px;
-  padding-bottom: 80px;
+  padding-bottom: 20px;
+}
+
+.dance {
+  padding-bottom: 30px;
+  width: 420px;
 }
