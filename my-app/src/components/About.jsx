@@ -15,7 +15,7 @@ class About extends Component {
             <a href="https://github.com/NateFalconer/react-api-project">GitHub</a>
             </div>
             <img className="pyr" alt="pyra" src="./assets/pyramid.png" /> <br />
-            {/* <img className="dance" alt="dancin" src="./assets/dancin.gif" /> */}
+            <img className="dance" alt="dancin" src="./assets/dancin.gif" />
             </div>
         );
     }
