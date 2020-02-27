@@ -37,9 +37,11 @@ class HomePage extends Component {
             "over", "can", "been", "whats", "he", "his", "except", "still",
             "always", "am", "call", "same", "time", "there", "it", "youve",
             "ive", "their", "where", "people", "need", "four", "five", "six", "something",
-            "anything", "everything", "zero", "dear", "got", "between", "each", "our", "good", "great", "belong", "keep", "little", "name", "know", "anyone",
+            "anything", "everything", "zero", "dear", "got", "between", "each", "our", "good", 
+            "great", "belong", "keep", "little", "name", "know", "anyone",
             "notice", "complete", "proper", "own", "bad", "word", "idea", "capable",
-            "amount",
+            "amount", "tom", "april", "andy", "leslie", "gary", "larry", "jerry",
+            "donna", "believe", 
         ];
 
         let expStr = uselessWordArray.join("|")
